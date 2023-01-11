@@ -17,7 +17,7 @@ export default function App() {
         style={styles.touchable}
         onPress={Keyboard.dismiss}
       >
-        <View style={{ marginTop: 20 }}>
+        <View style={{ marginTop: 20, flex: 1 }}>
           <TextInput
             style={styles.input}
             placeholder="Email"
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   touchable: {
     borderColor: "yellow",
     borderWidth: 1,
+    flex: 1,
   },
   keyboardAvoidingView: {
     borderColor: "blue",
