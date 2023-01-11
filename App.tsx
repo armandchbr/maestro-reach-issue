@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import React from "react";
 import {
   Button,
   Keyboard,
@@ -8,6 +9,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -15,46 +17,39 @@ import {
 export default function App() {
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+      <TouchableWithoutFeedback
+        style={styles.touchable}
+        onPress={Keyboard.dismiss}
+      >
+        <View style={{ marginTop: 20 }}>
+          <TextInput
+            autoFocus
+            placeholder="Email"
+            style={styles.input}
+            autoCorrect={false}
+            autoCapitalize="none"
+            autoComplete="email"
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            testID="login_input_email"
+          />
+          <TextInput
+            secureTextEntry
+            style={styles.input}
+            autoComplete="password"
+            textContentType="password"
+            placeholder={"Password"}
+            testID="login_input_password"
+          />
+          <TouchableOpacity
+            testID="login_cta_submit"
+            onPress={() => {}}
+            style={styles.btn}
           >
-            <View style={{ marginTop: 20 }}>
-              <TextInput
-                autoFocus
-                placeholder="Email"
-                style={styles.input}
-                autoCorrect={false}
-                autoCapitalize="none"
-                autoComplete="email"
-                keyboardType="email-address"
-                textContentType="emailAddress"
-                testID="login_input_email"
-              />
-              <View style={{ marginBottom: 20, height: 40 }}>
-                <TextInput
-                  secureTextEntry
-                  style={styles.input}
-                  autoComplete="password"
-                  textContentType="password"
-                  placeholder={"Password"}
-                  testID="login_input_password"
-                />
-              </View>
-            </View>
-            <View style={{ flex: 1 }} />
-            <View style={{ marginBottom: 2 }}>
-              <Button
-                testID="login_cta_submit"
-                title={"Submit"}
-                onPress={() => {}}
-              />
-            </View>
-          </KeyboardAvoidingView>
-        </TouchableWithoutFeedback>
-      </SafeAreaView>
+            <Text style={styles.btnText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 }
@@ -62,13 +57,46 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#ddd",
+    paddingVertical: 80,
+    paddingHorizontal: 20,
+    borderColor: "red",
+    borderWidth: 1,
+    justifyContent: "space-between",
+  },
+  touchable: {
+    borderColor: "yellow",
+    borderWidth: 1,
+  },
+  keyboardAvoidingView: {
+    borderColor: "blue",
+    borderWidth: 1,
+    flex: 1,
+  },
+  btn: {
+    paddingVertical: 20,
+    paddingHorizontal: 40,
+    height: 60,
+    width: "100%",
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#545454",
-    padding: 20,
+    borderColor: "#888",
+    borderWidth: 1,
+  },
+  btnText: {
+    color: "#ddd",
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    fontSize: 16,
   },
   input: {
     color: "#000",
     height: 60,
-    padding: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderColor: "#000",
     borderWidth: 1,
     marginBottom: 20,
