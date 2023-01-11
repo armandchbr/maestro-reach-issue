@@ -23,21 +23,12 @@ export default function App() {
       >
         <View style={{ marginTop: 20 }}>
           <TextInput
-            autoFocus
-            placeholder="Email"
             style={styles.input}
-            autoCorrect={false}
-            autoCapitalize="none"
-            autoComplete="email"
-            keyboardType="email-address"
-            textContentType="emailAddress"
+            placeholder="Email"
             testID="login_input_email"
           />
           <TextInput
-            secureTextEntry
             style={styles.input}
-            autoComplete="password"
-            textContentType="password"
             placeholder={"Password"}
             testID="login_input_password"
           />
