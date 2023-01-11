@@ -15,6 +15,7 @@ export default function App() {
     <View style={styles.container}>
       <TouchableWithoutFeedback
         style={styles.touchable}
+        testID="touchable_view"
         onPress={Keyboard.dismiss}
       >
         <View style={{ marginTop: 20, flex: 1 }}>
